@@ -1,0 +1,17 @@
+# Project Dependency "agent" (Python 3.14)
+
+# LLM Client (AsyncAnthropic)
+anthropic>=2.3.0
+
+# Web requests
+requests>=2.34.0
+
+# Serialisation / Agent saving methods
+joblib>=1.6.0
+
+# Markdown Display
+ipython>=9.0.0
+
+# Data Representation
+pandas>=3.0.0
+
