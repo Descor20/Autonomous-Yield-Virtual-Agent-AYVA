@@ -25,7 +25,7 @@ def replace_or_write(firstname: str, lastname: str, job: str, birthdate: str, em
     conn = get_connection()
     
     conn.execute(
-        "INSERT INTO files (name, extension, path, content) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO files (firstname, lastname, job, birthdate, email, language) VALUES (?, ?, ?, ?, ?, ?)",
         (firstname, lastname, job, birthdate, email, language),
     )
     conn.commit()
