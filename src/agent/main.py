@@ -32,7 +32,10 @@ init()
 assistant_web = load_Agent(WEB_AGENT)
 assistant_db = load_Agent(DB_AGENT)
 
-supervisor = load_Agent(SUPERVISER)
+WORKERS = {"assistant web": assistant_web, "assistant data": assistant_db}
+SUPERVISEUR = get_context("superviser")
+
+supervisor = Supervisor("superviseur", SUPERVISEUR, agents=WORKERS)
 
 def ask(agent: Agent, request: str):
 
