@@ -10,14 +10,14 @@ launch_prod() {
     echo "Launching the server..."
     echo "selected production mod..."
 
-    python3 -m fastapi run server.py
+    uv run fastapi dev server.py
 }
 
 launch_dev() {
     echo "Launching the server..."
     echo "selected developpement mod..."
 
-    python3 -m fastapi dev server.py
+    uv dev fastapi dev server.py
 }
 
 main() {
