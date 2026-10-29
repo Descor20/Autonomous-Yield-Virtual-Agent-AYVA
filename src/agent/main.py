@@ -17,6 +17,8 @@ from src.agent      import set_model, get_model, load_Agent
 from src.agent      import Agent, Supervisor
 from src.agent      import execute, get_context
 
+from src.tools      import list_id
+
 set_model("qwen3:4b", AsyncAnthropic(base_url="http://localhost:11434", api_key="ollama"))  #"claude-haiku-4-5-20251001"
 
 __DATA = Path("data")
@@ -43,9 +45,14 @@ def ask(agent: Agent, request: str):
         run = await execute(agent, request, max_token=8192)
         afficher_trace(run.trace_id)
         display(Markdown(run.reponse))
+        return run
         
     with ThreadPoolExecutor(max_workers=1) as ex:
         result= ex.submit(asyncio.run, inner_ask(agent=agent, request=request)).result()
         return result
 
-ask(supervisor, "Ajoute l'utilisateur Arthur Magnin, né le 10 Aout, étant un étudiant en informatique à l'EPITA.")
+run = ask(supervisor, "Ajoute l'utilisateur Arthur Magnin, né le 10 Aout, étant un étudiant en informatique à l'EPITA.")
+print("-" * 50)
+print(run.reponse)
+print("\n")
+print(list_id())
