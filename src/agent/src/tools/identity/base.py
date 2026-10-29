@@ -20,7 +20,7 @@ def list_id() -> list[dict]:
     return [dict(r) for r in conn.execute("SELECT * FROM files ORDER BY id")]
 
 
-def replace_or_write(firstname: str, lastname: str, job: str, birthdate: str, email: str, language: str) :
+def replace_or_write(firstname: str, lastname: str, job: str = None, birthdate: str = None, email: str = None, language: str = None) :
     "Ecrit un utilisateur dans la base de donnée, cela peut être un remplacement."
     conn = get_connection()
     
